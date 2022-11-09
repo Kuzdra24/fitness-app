@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$bg-color: #fafafc;
+
+*{
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: $bg-color;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
