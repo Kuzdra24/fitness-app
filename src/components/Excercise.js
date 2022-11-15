@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { ReactComponent as Eye } from "../assets/icons/eye.svg";
+import { Modal } from "./Modal";
 
 const Wrapper = styled.div`
   background-color: #fff;
+  position: static;
   margin: 30px;
   padding: 15px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   font-size: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 300px;
   box-shadow: -1px 3px 13px -5px rgba(66, 68, 90, 1);
   img {
     width: 100%;
-    max-width: 130px;
+    max-width: 230px;
   }
   div {
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 `;
 
@@ -28,7 +30,8 @@ const Button = styled.button`
   height: 50px;
   border-radius: 50%;
   border: none;
-  margin: 5px;
+  position: static;
+  margin-top: 20px;
   font-size: 33px;
   display: flex;
   justify-content: center;
@@ -43,6 +46,8 @@ const Button = styled.button`
 `;
 
 export const Excercise = ({ name, bodyPart, url }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <Wrapper>
       <div>
@@ -50,12 +55,13 @@ export const Excercise = ({ name, bodyPart, url }) => {
         <strong>{name}</strong>
       </div>
       <img src={url} alt={"Exercise instruction"} />
-      <div>
-        <Button onClick={() => console.log('Will be add')}>+</Button>
-        <Button>
-          <Eye width="40px" height="40px" />
-        </Button>
-      </div>
+
+      <Button onClick={() => setIsOpen(true)}>
+        +
+      </Button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} name={name} />
+       
+     
     </Wrapper>
   );
 };

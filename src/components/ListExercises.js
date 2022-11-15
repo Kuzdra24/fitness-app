@@ -5,11 +5,16 @@ import { Pagination } from "@mui/material";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+  }
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
   flex: 10;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
   border-right: 1px solid #ccc;
   border-left: 1px solid #ccc;
@@ -31,21 +36,23 @@ export const List = () => {
 
   if (data === undefined) {
     return (
-      <Wrapper>
-        <h1>Excercise</h1>
-        <p>Loading...</p>
+      <Wrapper style={{height: "100vh", display: "block"}}>
+        <h2 style={{margin: "35px"}}>Loading...</h2>
       </Wrapper>
     );
   }
   const currentExercises = data.slice(indexOfFirstExc, indexOfLastExc);
   return (
     <Wrapper>
-      {currentExercises.map(({ name, bodyPart, gifUrl, id }) => (
-        <Excercise key={id} url={gifUrl} name={name} bodyPart={bodyPart} />
-      ))}
+      <div>
+        {currentExercises.map(({ name, bodyPart, gifUrl, id }) => (
+          <Excercise key={id} url={gifUrl} name={name} bodyPart={bodyPart} />
+        ))}
+      </div>
+
       <Pagination
         style={{
-          margin: '20px'
+          margin: "20px auto",
         }}
         count={Math.ceil(data.length / exercisesPerPage)}
         shape="rounded"

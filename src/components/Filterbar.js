@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
-import { Context } from "../context/context";
+import React from "react";
 import styled from "styled-components";
+import { Checkbox } from "./FilterElement";
 
 const Wrapper = styled.form`
   display: flex;
@@ -8,54 +8,30 @@ const Wrapper = styled.form`
   align-items: center;
   flex: 1;
   height: 100vh;
-  
+  padding: 10px;
 `;
 
-const Select = styled.select`
-    padding: 5px 10px;
-    background-color: white;
-    border: 1px solid #303030;
-    margin: 30px 0;
-`
+const FilterTitle = styled.strong`
+  margin: 20px 0 8px;
+  color: #303030;
+`;
 
 export const Filterbar = () => {
-  const [bodyPart, setBodyPart] = useState("");
-  // const [equipment, setEquipment] = useState("")
-
-  const ctx = useContext(Context);
-
-  const onBodyPartChange = (e) => {
-    setBodyPart(e.target.value);
-    ctx.filterExercises(e.target.value);
-    
-  }
-
   return (
-    <Wrapper >
-      <Select value={bodyPart} onChange={onBodyPartChange}>
-        <option value="">Chose body-part</option>
-        <option value="chest">Chest</option>
-        <option value="back">Back</option>
-        <option value="legs">Legs</option>
-        <option value="arms">Arms</option>
-      </Select>
+    <Wrapper>
+      <FilterTitle>Filter by body-part</FilterTitle>
+      <Checkbox id="chest" type="bodyPart" />
+      <Checkbox id="back" type="bodyPart" />
+      <Checkbox id="legs" type="bodyPart" />
+      <Checkbox id="arms" type="bodyPart" />
+      <Checkbox id="shoulders" type="bodyPart" />
 
-      <Select name="equipment" >
-        <option value="">Chose Equipment</option>
-        <option value="chest">Chest</option>
-        <option value="back">Back</option>
-        <option value="legs">Legs</option>
-        <option value="arms">Arms</option>
-      </Select>
-
-      <Select name="Target">
-        <option value="">Chose body-part</option>
-        <option value="chest">Chest</option>
-        <option value="back">Back</option>
-        <option value="legs">Legs</option>
-        <option value="arms">Arms</option>
-      </Select>
-      <button type="submit">Filter</button>
+      <FilterTitle>Filter by Equipment</FilterTitle>
+      <Checkbox id="barbell" type="equipment" />
+      <Checkbox id="cable" type="equipment" />
+      <Checkbox id="body weight" type="equipment" />
+      <Checkbox id="dumbbells" type="equipment" />
+      <Checkbox id="machines" type="equipment" />
     </Wrapper>
   );
 };
