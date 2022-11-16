@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../context/context";
 import styled from "styled-components";
 import { TreningElement } from "./TreningElement";
 
@@ -13,10 +14,13 @@ const Wrapper = styled.div`
 `;
 
 export const Trening = () => {
+  const { userExercises } = useContext(Context);
   return (
     <Wrapper>
       <h1>Your Exercises: </h1>
-      <TreningElement />
+      {userExercises.map(({ name, SeriesXReps }, i) => (
+        <TreningElement name={name} series={SeriesXReps} index={i+1} key={i} />
+      ))}
     </Wrapper>
   );
 };

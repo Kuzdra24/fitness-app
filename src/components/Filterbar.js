@@ -30,8 +30,8 @@ export const Filterbar = () => {
       <Checkbox id="barbell" type="equipment" />
       <Checkbox id="cable" type="equipment" />
       <Checkbox id="body weight" type="equipment" />
-      <Checkbox id="dumbbells" type="equipment" />
-      <Checkbox id="machines" type="equipment" />
+      <Checkbox id="dumbbell" type="equipment" />
+      <Checkbox id="machine" type="equipment" />
     </Wrapper>
   );
 };

@@ -12,14 +12,14 @@ const ExcWrapper = styled.div`
 
 const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <ExcWrapper>
         <Filterbar />
         <List />
         <Trening />
       </ExcWrapper>
-    </div>
+    </>
   );
 };
 

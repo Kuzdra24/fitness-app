@@ -4,6 +4,9 @@ import ExcerciseData from "../data/data.json";
 
 export const Context = createContext({
   exercises: [],
+  userExercises: [],
+  addUserExercises: () => {},
+  removeUserExercises: () => {},
   filterData: () => {},
 });
 
@@ -11,8 +14,19 @@ function ContextProvider({ children }) {
   const [data, setData] = useState();
   const [allData, setAllData] = useState();
   const [userOptions, setUserOptions] = useState([]);
+  const [userExercises, setUserExercises] = useState([]);
 
   // const url = "https://exercisedb.p.rapidapi.com/exercises";
+
+  const addUserExercises = (exercise) => {
+    let arr = [...userExercises, exercise];
+    setUserExercises(arr);
+  };
+
+  const removeUserExercises = (n) => {
+    let arr = userExercises.filter(({ name }) => n !== name);
+    setUserExercises(arr);
+  };
 
   const filterData = (excs, isChecked) => {
     if (isChecked) {
@@ -54,7 +68,6 @@ function ContextProvider({ children }) {
       setData(allExcs);
     } else {
       setData(allData);
-      console.log(allData);
     }
   }, [userOptions, allData]);
 
@@ -75,6 +88,9 @@ function ContextProvider({ children }) {
     <Context.Provider
       value={{
         data,
+        userExercises,
+        removeUserExercises,
+        addUserExercises,
         filterData,
       }}
     >
