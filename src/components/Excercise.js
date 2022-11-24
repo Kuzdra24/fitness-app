@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Modal } from "./Modals/Modal";
+import { AddButton } from "./AddButton";
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
   font-size: 20px;
   width: 100%;
   max-width: 300px;
-  box-shadow: -1px 3px 13px -5px rgba(66, 68, 90, 1);
+  border-radius: 30px;
   img {
     width: 100%;
     max-width: 230px;
@@ -25,25 +26,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Button = styled.button`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: none;
-  position: static;
-  margin-top: 20px;
-  font-size: 33px;
-  display: flex;
-  justify-content: center;
-  background-color: #f1f1f1;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.3s ease-out;
-  &:hover {
-    background-color: #ddd;
-    transform: translate(0%, -10%);
-  }
-`;
+
 
 export const Excercise = ({ name, bodyPart, url }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,12 +39,8 @@ export const Excercise = ({ name, bodyPart, url }) => {
       </div>
       <img src={url} alt={"Exercise instruction"} />
 
-      <Button onClick={() => setIsOpen(true)}>
-        +
-      </Button>
+      <AddButton onClick={() => setIsOpen(true)}>+</AddButton>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} name={name} />
-       
-     
     </Wrapper>
   );
 };

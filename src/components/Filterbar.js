@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Checkbox } from "./FilterElement";
+import { useWidth } from "../hooks/useWidth";
 
 const Wrapper = styled.form`
-  display: flex;
+  display: ${({ width }) => width > 600 ? "flex" : "none"};
   flex-direction: column;
   align-items: center;
   flex: 1;
@@ -17,8 +18,10 @@ const FilterTitle = styled.strong`
 `;
 
 export const Filterbar = () => {
+  const width = useWidth();
+  
   return (
-    <Wrapper>
+    <Wrapper width={width}>
       <FilterTitle>Filter by body-part</FilterTitle>
       <Checkbox id="chest" type="bodyPart" />
       <Checkbox id="back" type="bodyPart" />

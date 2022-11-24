@@ -16,8 +16,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  border-right: 1px solid #ccc;
-  border-left: 1px solid #ccc;
+  
 `;
 
 export const List = () => {

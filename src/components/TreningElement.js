@@ -9,12 +9,12 @@ const Wrapper = styled.div`
   height: 80px;
   background-color: #fff;
   margin: 20px;
-  box-shadow: -1px 3px 13px -5px rgba(66, 68, 90, 1);
   display: flex;
   justify-content: space-between;
   padding: 20px;
   align-items: center;
 `;
+
 
 export const TreningElement = ({ name, series, index }) => {
   const ctx = useContext(Context);

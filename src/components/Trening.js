@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "../context/context";
 import styled from "styled-components";
-import { TreningElement } from "./TreningElement";
+import { Workout } from "./Workout";
 
 const Wrapper = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 1000px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -14,13 +14,33 @@ const Wrapper = styled.div`
 `;
 
 export const Trening = () => {
-  const { userExercises } = useContext(Context);
-  return (
-    <Wrapper>
-      <h1>Your Exercises: </h1>
-      {userExercises.map(({ name, SeriesXReps }, i) => (
-        <TreningElement name={name} series={SeriesXReps} index={i+1} key={i} />
-      ))}
-    </Wrapper>
-  );
+  const { userData } = useContext(Context);
+
+  const displayExercises = (arr) =>
+    arr.map(({ name, SeriesXReps }, i) => (
+      <li key={i}>
+       {name} | <strong>{SeriesXReps}</strong>
+       <hr />
+      </li>
+    ));
+
+  console.log(userData);
+  if (!userData) {
+    return <p>Loadning ...</p>;
+  } else {
+    return (
+      <Wrapper>
+        <h1>Your Plan: </h1>
+        {userData.map(({ name, exercises, target }) => (
+          <Workout
+            bg={"#AEF8B6"}
+            name={name}
+            target={target}
+            exercises={displayExercises(exercises)}
+            key={name}
+          />
+        ))}
+      </Wrapper>
+    );
+  }
 };

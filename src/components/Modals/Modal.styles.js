@@ -7,7 +7,7 @@ export const OtherContent = styled.div`
   bottom: 0;
   left: 0;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 export const CloseButton = styled.button`
@@ -25,6 +25,11 @@ export const CloseButton = styled.button`
   right: 0;
 `;
 
+export const Select = styled.select`
+  margin-bottom: 10px;
+  padding: 5px 10px;
+`
+
 export const Wrapper = styled.div`
   position: fixed;
   z-index: 999;
@@ -32,6 +37,8 @@ export const Wrapper = styled.div`
   max-width: 500px;
   height: 400px;
   background-color: #fff;
+  border-radius: 30px;
+  box-shadow: -1px 3px 13px -5px rgba(66, 68, 90, 1); 
   top: 50%;
   left: 50%;
   padding: 20px;
@@ -47,7 +54,7 @@ export const Wrapper = styled.div`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      margin: 80px;
+      margin: 20px;
       input{
         margin-bottom: 15px;
       }

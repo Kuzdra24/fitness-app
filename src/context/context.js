@@ -14,19 +14,9 @@ function ContextProvider({ children }) {
   const [data, setData] = useState();
   const [allData, setAllData] = useState();
   const [userOptions, setUserOptions] = useState([]);
-  const [userExercises, setUserExercises] = useState([]);
-
+  const [userData, setUserData] = useState([]);
+  
   // const url = "https://exercisedb.p.rapidapi.com/exercises";
-
-  const addUserExercises = (exercise) => {
-    let arr = [...userExercises, exercise];
-    setUserExercises(arr);
-  };
-
-  const removeUserExercises = (n) => {
-    let arr = userExercises.filter(({ name }) => n !== name);
-    setUserExercises(arr);
-  };
 
   const filterData = (excs, isChecked) => {
     if (isChecked) {
@@ -42,6 +32,19 @@ function ContextProvider({ children }) {
       setUserOptions(allData);
     }
   };
+
+  useEffect(() => {
+    fetch("http://192.168.1.10:8000/trenings", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUserData(data);
+      });
+  }, []);
 
   useEffect(() => {
     const allExcs = [];
@@ -61,7 +64,7 @@ function ContextProvider({ children }) {
             allExcs.push(...filterData);
             break;
           default:
-            console.log("eee");
+            console.log("error");
             break;
         }
       });
@@ -88,9 +91,7 @@ function ContextProvider({ children }) {
     <Context.Provider
       value={{
         data,
-        userExercises,
-        removeUserExercises,
-        addUserExercises,
+        userData,
         filterData,
       }}
     >
