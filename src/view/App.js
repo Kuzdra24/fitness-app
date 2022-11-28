@@ -44,7 +44,6 @@ const App = () => {
     },
     {
       path: "/trening",
-
       element: (
         <>
           <Navbar />

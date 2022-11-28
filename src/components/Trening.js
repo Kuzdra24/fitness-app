@@ -16,24 +16,24 @@ const Wrapper = styled.div`
 export const Trening = () => {
   const { userData } = useContext(Context);
 
+  const colors = ["#AEF8B6", '#FCA973', '#F784A8', '#F3FF63']
+
   const displayExercises = (arr) =>
     arr.map(({ name, SeriesXReps }, i) => (
-      <li key={i}>
+      <li key={i} style={{margin: "10px 0"}}>
        {name} | <strong>{SeriesXReps}</strong>
-       <hr />
       </li>
     ));
 
-  console.log(userData);
   if (!userData) {
     return <p>Loadning ...</p>;
   } else {
     return (
       <Wrapper>
         <h1>Your Plan: </h1>
-        {userData.map(({ name, exercises, target }) => (
+        {userData.map(({ name, exercises, target },i) => (
           <Workout
-            bg={"#AEF8B6"}
+            bg={colors[i]}
             name={name}
             target={target}
             exercises={displayExercises(exercises)}

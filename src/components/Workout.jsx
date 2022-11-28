@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     max-width: 600px;
     min-height: 10rem;   
     background-color: #fff;
-    border-radius: 30px;
+    border-radius: 10px;
     display: flex;
     margin-top: 35px;
     .wrapper-info{
@@ -31,15 +31,15 @@ const BackgroundElement = styled.div`
     flex: 3;
     align-items: center;
     justify-content: center;
-    border-radius: 30px 0 0 30px;
+    border-radius: 10px 0 0 10px;
     padding: 20px; 
     transition: 0.5s ease-out;
- 
+    cursor: pointer;
     &:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
-    transform: translateX(1em) scaleX(1.4) ;
+    transform: translateX(1em) scaleX(1.2) ;
 
   }
 `
@@ -54,7 +54,6 @@ export const Workout = ({name,target,exercises,bg}) => {
             <h3>{target}</h3>
             <ul>{exercises}</ul>
         </div>
-        
     </Wrapper>
   )
 }

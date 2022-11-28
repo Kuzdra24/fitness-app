@@ -38,7 +38,6 @@ export const Navbar = () => {
   return (
     <Wrapper width={width}>
       <h1>Hello Patryk 💪🏽</h1>
-      {console.log(width)}
       <ul>
         <li>
           <Link to={"/trening"}>Trening Plan</Link>

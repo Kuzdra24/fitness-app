@@ -19,18 +19,35 @@ const Wrapper = styled.div`
     0% {
       transform: translate(0, -500%);
     }
-    
     100% {
       transform: translate(0, -300%);
     }
   }
 `;
 
-export const SuccesAdd = ({ isVisible }) => {
+const CloseButton = styled.button`
+  position: absolute;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  font-weight: bold;
+  cursor: pointer;
+  transform: translate(130px, -20px);
+  strong {
+    color: #145214;
+  }
+`;
+
+export const SuccesAdd = ({ isVisible, onInfoClose }) => {
   if (!isVisible) return null;
   return (
     <Wrapper>
-      <strong style={{ color: "#145214" }}>Succes added Workout</strong>
+      <div>
+        <CloseButton onClick={onInfoClose}>
+          <strong>X</strong>
+        </CloseButton>
+      </div>
+
+      <strong style={{ color: "#145214" }}>Succes added Workout 😁</strong>
     </Wrapper>
   );
 };

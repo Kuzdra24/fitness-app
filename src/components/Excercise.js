@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Modal } from "./Modals/Modal";
+import { AddExercise } from "./Modals/AddExercise";
 import { AddButton } from "./AddButton";
 
 const Wrapper = styled.div`
@@ -40,7 +40,7 @@ export const Excercise = ({ name, bodyPart, url }) => {
       <img src={url} alt={"Exercise instruction"} />
 
       <AddButton onClick={() => setIsOpen(true)}>+</AddButton>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} name={name} />
+      <AddExercise isOpen={isOpen} onClose={() => setIsOpen(false)} name={name} />
     </Wrapper>
   );
 };

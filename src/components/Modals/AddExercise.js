@@ -1,18 +1,20 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../context/context";
-import { Wrapper, CloseButton, OtherContent, Select } from "./Modal.styles";
+import { Wrapper, CloseButton, OtherContent, Select } from "./AddExercise.style";
 import { AddButton } from "../AddButton";
 import { SuccesAdd } from "../SuccesAdd";
 
-export const Modal = ({ name, isOpen, onClose }) => {
+
+export const AddExercise = ({ name, isOpen, onClose }) => {
   const [numOfSeries, setNumOfSeries] = useState("");
   const [numOfReps, setNumOfReps] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [trening, setTrening] = useState("");
   const { userData } = useContext(Context);
 
-  async function postData(url, data) {
+  async function putData(url, data) {
     const response = await fetch(url, {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -32,8 +34,13 @@ export const Modal = ({ name, isOpen, onClose }) => {
   const addExercise = async (e) => {
     e.preventDefault();
     const result = `${numOfSeries} x ${numOfReps}`;
-    let obj = { name, SeriesXReps: result };
-    await postData("http://192.168.1.10:8000/trenings?id=1/exercises", obj);
+    const obj = { exercise: { name, SeriesXReps: result } };
+    const selectedTrening = userData.filter(({name}) => name === trening)
+    const id = selectedTrening[0]._id
+    await putData(
+      `http://localhost:8080/api/workouts/${id}`,
+      obj
+    );
     setIsVisible(true);
   };
 
@@ -42,13 +49,16 @@ export const Modal = ({ name, isOpen, onClose }) => {
     <>
       <OtherContent onClick={onClose} />
       <Wrapper>
-      <SuccesAdd isVisible={isVisible} />
+        <SuccesAdd
+          isVisible={isVisible}
+          onInfoClose={() => setIsVisible(false)}
+        />
         <div className="modal__wrapper">
           <CloseButton onClick={onClose}>X</CloseButton>
           <h3>{name}</h3>
 
           <form>
-            <Select name="trenig">
+            <Select name="trenig" onChange={(e) => setTrening(e.target.value)}>
               <option value="">Choose Workout</option>
               {userData.map(({ name }, i) => (
                 <option key={i} value={name}>

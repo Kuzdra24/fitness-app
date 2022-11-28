@@ -34,10 +34,11 @@ function ContextProvider({ children }) {
   };
 
   useEffect(() => {
-    fetch("http://192.168.1.10:8000/trenings", {
+    fetch("http://localhost:8080/api/workouts/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*'
       },
     })
       .then((response) => response.json())
