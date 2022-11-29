@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../context/context";
 import styled from "styled-components";
-import { Workout } from "./Workout";
+import { Workout } from "../components/Workout";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   flex: 5;
 `;
 
-export const Trening = ({theme}) => {
+const WorkoutPlan = () => {
   const { userData } = useContext(Context);
   
   const displayExercises = (arr) =>
@@ -42,3 +42,5 @@ export const Trening = ({theme}) => {
     );
   }
 };
+
+export default WorkoutPlan;

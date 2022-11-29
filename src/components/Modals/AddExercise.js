@@ -4,7 +4,7 @@ import { Wrapper, CloseButton, OtherContent } from "./AddExercise.style";
 import { AddButton } from "../AddButton";
 import { SuccesAdd } from "../notifications/SuccesAdd";
 import { SelectWorkout } from "../SelectWorkout";
-import {useWidth} from '../../hooks/useWidth'
+// import {useWidth} from '../../hooks/useWidth'
 
 export const AddExercise = ({ name, isOpen, onClose }) => {
   const [numOfSeries, setNumOfSeries] = useState("");
@@ -46,7 +46,7 @@ export const AddExercise = ({ name, isOpen, onClose }) => {
   return (
     <>
       <OtherContent onClick={onClose} />
-      <Wrapper width={useWidth}>
+      <Wrapper >
         <SuccesAdd
           isVisible={isVisible}
           onInfoClose={() => setIsVisible(false)}

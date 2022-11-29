@@ -4,7 +4,7 @@ import { AddExercise } from "./modals/AddExercise";
 import { AddButton } from "./AddButton";
 
 const Wrapper = styled.div`
-  background-color: #fff;
+  background-color: ${({theme}) => theme.colors.white};
   position: static;
   margin: 30px;
   padding: 15px;

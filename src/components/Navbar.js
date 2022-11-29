@@ -10,8 +10,6 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 0;
-  margin: 0;
   border-bottom: 1px solid #ccc;
   h1 {
     font-size: 18px;
