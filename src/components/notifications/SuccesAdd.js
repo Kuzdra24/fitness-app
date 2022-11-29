@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   max-width: 300px;
   height: 100px;
-  background-color: #84e184;
+  background-color: ${({theme}) => theme.colors.success};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,12 +28,12 @@ const Wrapper = styled.div`
 const CloseButton = styled.button`
   position: absolute;
   border: none;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: ${({theme}) => theme.colors.success};
   font-weight: bold;
   cursor: pointer;
   transform: translate(130px, -20px);
   strong {
-    color: #145214;
+    color: ${({theme}) => theme.colors.darkGreen};
   }
 `;
 

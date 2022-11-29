@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+import { createGlobalStyle } from 'styled-components';
 
-$bg-color: #e8e5ee;
-
-*{
+export const GlobalStyle = createGlobalStyle`
+ *{
     font-family: 'Roboto', sans-serif;
     padding: 0;
     margin: 0;
@@ -12,9 +11,10 @@ $bg-color: #e8e5ee;
 }
 
 body{
-    background-color: $bg-color;
+    background-color: ${({theme}) => theme.colors.lightPurple};
     color: #303030;
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
 }
+`;

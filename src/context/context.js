@@ -34,7 +34,7 @@ function ContextProvider({ children }) {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/workouts/", {
+    fetch("http://192.168.1.10:8080/api/workouts/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

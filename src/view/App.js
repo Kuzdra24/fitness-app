@@ -1,12 +1,14 @@
 import React from "react";
-import "../assets/styles/global-styles.scss";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { List } from "../components/ListExercises";
 import { Navbar } from "../components/Navbar";
 import { Filterbar } from "../components/Filterbar";
 import { Trening } from "../components/Trening";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Progress } from "../components/Calendar";
 import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../assets/styles/theme";
+import { GlobalStyle } from "../assets/styles/GlobalStyles";
+import "../assets/styles/font.css";
 
 const ExcWrapper = styled.div`
   display: flex;
@@ -26,7 +28,7 @@ const App = () => {
       element: (
         <>
           <Navbar />
-          <Progress />
+          <h2>Welcome into main Route</h2>
         </>
       ),
     },
@@ -54,9 +56,12 @@ const App = () => {
   ]);
 
   return (
-    <Wrapper>
-      <RouterProvider router={router} />
-    </Wrapper>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Wrapper>
+        <RouterProvider router={router} />
+      </Wrapper>
+    </ThemeProvider>
   );
 };
 

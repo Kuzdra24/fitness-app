@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { AddExercise } from "./Modals/AddExercise";
+import { AddExercise } from "./modals/AddExercise";
 import { AddButton } from "./AddButton";
 
 const Wrapper = styled.div`

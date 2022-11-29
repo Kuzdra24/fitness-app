@@ -11,7 +11,7 @@ export const OtherContent = styled.div`
 `;
 
 export const CloseButton = styled.button`
-  background-color: #ddd;
+  background-color: ${({theme}) => theme.colors.lightGrey};
   border: none;
   display: flex;
   align-items: center;
@@ -25,11 +25,6 @@ export const CloseButton = styled.button`
   right: 0;
 `;
 
-export const Select = styled.select`
-  margin-bottom: 10px;
-  padding: 5px 10px;
-`
-
 export const Wrapper = styled.div`
   position: fixed;
   z-index: 999;
@@ -38,7 +33,7 @@ export const Wrapper = styled.div`
   height: 400px;
   background-color: #fff;
   border-radius: 30px;
-  box-shadow: -1px 3px 13px -5px rgba(66, 68, 90, 1); 
+  box-shadow: ${({theme}) => theme.boxShadow}; 
   top: 50%;
   left: 50%;
   padding: 20px;

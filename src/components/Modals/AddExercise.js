@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../context/context";
-import { Wrapper, CloseButton, OtherContent, Select } from "./AddExercise.style";
+import { Wrapper, CloseButton, OtherContent } from "./AddExercise.style";
 import { AddButton } from "../AddButton";
-import { SuccesAdd } from "../SuccesAdd";
-
+import { SuccesAdd } from "../notifications/SuccesAdd";
+import { SelectWorkout } from "../SelectWorkout";
+import {useWidth} from '../../hooks/useWidth'
 
 export const AddExercise = ({ name, isOpen, onClose }) => {
   const [numOfSeries, setNumOfSeries] = useState("");
@@ -35,12 +36,9 @@ export const AddExercise = ({ name, isOpen, onClose }) => {
     e.preventDefault();
     const result = `${numOfSeries} x ${numOfReps}`;
     const obj = { exercise: { name, SeriesXReps: result } };
-    const selectedTrening = userData.filter(({name}) => name === trening)
-    const id = selectedTrening[0]._id
-    await putData(
-      `http://localhost:8080/api/workouts/${id}`,
-      obj
-    );
+    const selectedTrening = userData.filter(({ name }) => name === trening);
+    const [id] = selectedTrening;
+    await putData(`http://192.168.1.10:8080/api/workouts/add/${id._id}`, obj);
     setIsVisible(true);
   };
 
@@ -48,24 +46,18 @@ export const AddExercise = ({ name, isOpen, onClose }) => {
   return (
     <>
       <OtherContent onClick={onClose} />
-      <Wrapper>
+      <Wrapper width={useWidth}>
         <SuccesAdd
           isVisible={isVisible}
           onInfoClose={() => setIsVisible(false)}
         />
+
         <div className="modal__wrapper">
           <CloseButton onClick={onClose}>X</CloseButton>
           <h3>{name}</h3>
 
           <form>
-            <Select name="trenig" onChange={(e) => setTrening(e.target.value)}>
-              <option value="">Choose Workout</option>
-              {userData.map(({ name }, i) => (
-                <option key={i} value={name}>
-                  {name}
-                </option>
-              ))}
-            </Select>
+            <SelectWorkout setTrening={setTrening} userData={userData} />
 
             <label htmlFor="num_of_series">number of series: </label>
             <input
